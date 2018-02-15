@@ -15,6 +15,7 @@ class Article: NSObject {
     public var urlToImage: String?
     public var articleDescription: String?
     public var url: String?
+    public var publishedAt: Date?
     
     
 

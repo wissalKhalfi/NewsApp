@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func fetchArticles(){
-        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=46935084a6114cd9aa4b7585387a5c60")!)
+        let urlRequest = URLRequest(url: URL(string: "https://newsapi.org/v2/everything?domains=wsj.com,nytimes.com&apiKey=46935084a6114cd9aa4b7585387a5c60")!)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
             
@@ -37,13 +37,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if let articlesFromJson = json["articles"] as? [[String : AnyObject]] {
                     for articleFromJson in articlesFromJson {
                         let article = Article()
-                        if let title = articleFromJson["title"] as? String, let author = articleFromJson["author"] as? String, let desc = articleFromJson["description"] as? String, let url = articleFromJson["url"] as? String, let urlToImage = articleFromJson["urlToImage"] as? String {
+                        if  let title = articleFromJson["title"] as? String,
+                            let author = articleFromJson["author"] as? String,
+                            let desc = articleFromJson["description"] as? String,
+                            let publishedAt = articleFromJson["publishedAt"] as? String,
+                            let url = articleFromJson["url"] as? String,
+                            let urlToImage = articleFromJson["urlToImage"] as? String {
                             
                             article.author = author
                             article.articleDescription = desc
                             article.title = title
                             article.url = url
                             article.urlToImage = urlToImage
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                            let date = dateFormatter.date(from: publishedAt)!
+                            article.publishedAt = date
                         }
                         self.articles?.append(article)
                     }
@@ -68,8 +78,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.TitleArticle.text = self.articles?[indexPath.item].title
         cell.DescArticle.text = self.articles?[indexPath.item].articleDescription
         cell.AuthorArticle.text = self.articles?[indexPath.item].author
-        cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage!)!)
-        
+       // print(self.articles?[indexPath.item].urlToImage)
+       // cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage)!)
+          cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage!)!)
         return cell
     }
     
@@ -88,11 +99,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 }
 
-
 extension UIImageView {
     
     func downloadImage(from url: String){
-        
+    
         let urlRequest = URLRequest(url: URL(string: url)!)
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
@@ -109,4 +119,3 @@ extension UIImageView {
         task.resume()
     }
 }
-
