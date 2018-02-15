@@ -66,16 +66,24 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publish date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuP-mp-hbc">
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Jp7-9E-TRi" firstAttribute="leading" secondItem="ZmV-Sl-nGU" secondAttribute="leadingMargin" id="4Qb-Dk-4gv"/>
                                                 <constraint firstItem="ejE-W7-2NA" firstAttribute="leading" secondItem="Jp7-9E-TRi" secondAttribute="trailing" constant="8" id="D1L-uO-jgO"/>
+                                                <constraint firstItem="MsH-09-iOS" firstAttribute="top" secondItem="OuP-mp-hbc" secondAttribute="bottom" constant="5" id="LZd-QK-1an"/>
+                                                <constraint firstItem="OuP-mp-hbc" firstAttribute="top" secondItem="ZmV-Sl-nGU" secondAttribute="top" id="Mxe-t6-MKh"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ejE-W7-2NA" secondAttribute="trailing" constant="8" id="OeD-se-2tZ"/>
                                                 <constraint firstAttribute="bottom" secondItem="ywf-cd-jaX" secondAttribute="bottom" id="T6A-Xu-hFv"/>
                                                 <constraint firstItem="Jp7-9E-TRi" firstAttribute="centerY" secondItem="ZmV-Sl-nGU" secondAttribute="centerY" id="WQd-ED-jE3"/>
                                                 <constraint firstItem="MsH-09-iOS" firstAttribute="top" secondItem="Jp7-9E-TRi" secondAttribute="top" id="aw4-oB-Sxy"/>
                                                 <constraint firstItem="MsH-09-iOS" firstAttribute="leading" secondItem="Jp7-9E-TRi" secondAttribute="trailing" constant="8" id="eyP-sf-e3Q"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="MsH-09-iOS" secondAttribute="trailing" constant="8" id="fmg-ig-Ip5"/>
+                                                <constraint firstItem="OuP-mp-hbc" firstAttribute="leading" secondItem="ZmV-Sl-nGU" secondAttribute="leading" id="hx3-tS-Uc0"/>
                                                 <constraint firstAttribute="trailing" secondItem="ywf-cd-jaX" secondAttribute="trailing" id="m0R-Og-c1e"/>
                                                 <constraint firstItem="ywf-cd-jaX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ejE-W7-2NA" secondAttribute="bottom" constant="8" id="oUm-ws-o1M"/>
                                                 <constraint firstItem="ejE-W7-2NA" firstAttribute="top" secondItem="MsH-09-iOS" secondAttribute="bottom" constant="8" id="ob6-bL-vI0"/>
@@ -83,6 +91,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="ArticlePublishDate" destination="OuP-mp-hbc" id="bxT-1g-wJH"/>
                                             <outlet property="AuthorArticle" destination="ywf-cd-jaX" id="ld0-L3-f4R"/>
                                             <outlet property="DescArticle" destination="ejE-W7-2NA" id="l0x-Ii-xy1"/>
                                             <outlet property="ImgArticle" destination="Jp7-9E-TRi" id="cA6-ii-1ym"/>

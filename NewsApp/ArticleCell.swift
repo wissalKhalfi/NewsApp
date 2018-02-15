@@ -15,6 +15,7 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var DescArticle: UILabel!
     @IBOutlet weak var AuthorArticle: UILabel!
     
+    @IBOutlet weak var ArticlePublishDate: UILabel!
     
     
     override func awakeFromNib() {

@@ -78,8 +78,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.TitleArticle.text = self.articles?[indexPath.item].title
         cell.DescArticle.text = self.articles?[indexPath.item].articleDescription
         cell.AuthorArticle.text = self.articles?[indexPath.item].author
-       // print(self.articles?[indexPath.item].urlToImage)
-       // cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage)!)
+       
+        
+        let dateFormatter = DateFormatter()
+        let tempLocale = dateFormatter.locale // save locale temporarily
+        //dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        let dateP = self.articles?[indexPath.item].publishedAt
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.locale = tempLocale // reset the locale
+        let dateString = dateFormatter.string(from: dateP!)
+        
+        
+          cell.ArticlePublishDate.text = dateString
           cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage!)!)
         return cell
     }
