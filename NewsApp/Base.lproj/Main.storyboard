@@ -22,6 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsZ-MB-izJ">
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="nbo-Iw-CuC"/>
                                     <constraint firstAttribute="height" constant="20" id="zB9-1n-3TJ"/>
                                 </constraints>
                             </view>
@@ -32,7 +33,14 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="News app" id="Jch-O8-eyw"/>
+                                    <navigationItem title="News app" id="Jch-O8-eyw">
+                                        <barButtonItem key="leftBarButtonItem" image="menu" id="7qH-jL-Kh3">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="ShowCategories:" destination="BYZ-38-t0r" id="wed-jx-cxa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="203" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Iys-3P-vMx">
@@ -42,7 +50,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4rv-cd-Qak" id="ZmV-Sl-nGU">
-                                            <frame key="frameInset" width="375" height="202"/>
+                                            <frame key="frameInset" width="375" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jp7-9E-TRi">
@@ -104,29 +112,172 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="INd-FV-isd"/>
                                 </connections>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uOO-FB-DrK">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMt-Lh-ZI7">
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="guk-Lb-ihH"/>
+                                            <constraint firstAttribute="width" constant="180" id="lfo-ro-gYX"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Business" image="buisness">
+                                            <color key="titleColor" red="0.23374258980000001" green="0.75298477559999999" blue="0.62808172579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.52303106249999998" green="0.68354238739999995" blue="0.70024038460000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Business:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mIm-uE-lgm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-1o-P4b">
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="IhW-s7-hHM"/>
+                                            <constraint firstAttribute="height" constant="100" id="aY7-lQ-BAG"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="entertaiment" image="enter">
+                                            <color key="titleColor" red="0.80784314869999996" green="0.027450980619999999" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="entertaiment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ULr-Uj-LdQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-k0-Asp">
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Wo0-Uz-p3O"/>
+                                            <constraint firstAttribute="width" constant="180" id="vAy-Nw-hsg"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Health" image="health">
+                                            <color key="titleColor" red="0.46666666870000001" green="0.76470589639999997" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="health:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XiT-hg-Wcw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-Wa-5Id">
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="OBG-SX-x9K"/>
+                                            <constraint firstAttribute="width" constant="180" id="rac-To-h0E"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Science" image="science">
+                                            <color key="titleColor" red="0.99226762820000003" green="0.12467936459999999" blue="0.096805434780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="science:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WUa-4Y-J5P"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSX-6n-Kyl">
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Kgr-IO-M52"/>
+                                            <constraint firstAttribute="width" constant="180" id="PlQ-QE-sim"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Sports" image="sports">
+                                            <color key="titleColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sports:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y91-Uz-5Mp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjM-ra-ghu">
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="FbM-B9-mC9"/>
+                                            <constraint firstAttribute="width" constant="180" id="uKF-AT-K06"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Technology" image="tech">
+                                            <color key="titleColor" red="0.1411764771" green="0.3960784376" blue="0.5647059083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tech:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mFb-j0-R7d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.88990384619999996" green="0.3617263402" blue="0.8828487505" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="UMg-1o-P4b" firstAttribute="top" secondItem="bMt-Lh-ZI7" secondAttribute="bottom" id="5ia-gU-eUh"/>
+                                    <constraint firstItem="DjM-ra-ghu" firstAttribute="top" secondItem="HSX-6n-Kyl" secondAttribute="bottom" id="6OI-K9-iPP"/>
+                                    <constraint firstAttribute="trailing" secondItem="bMt-Lh-ZI7" secondAttribute="trailing" id="6xm-kc-kXg"/>
+                                    <constraint firstItem="DjM-ra-ghu" firstAttribute="leading" secondItem="uOO-FB-DrK" secondAttribute="leading" id="9uq-OM-EsV"/>
+                                    <constraint firstAttribute="trailing" secondItem="UMg-1o-P4b" secondAttribute="trailing" id="AmT-0L-d5R"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cl4-k0-Asp" secondAttribute="trailing" id="H37-uU-zMw"/>
+                                    <constraint firstAttribute="trailing" secondItem="DjM-ra-ghu" secondAttribute="trailing" id="Mmc-Yk-Z2F"/>
+                                    <constraint firstItem="bMt-Lh-ZI7" firstAttribute="leading" secondItem="uOO-FB-DrK" secondAttribute="leading" id="PZw-m0-GhB"/>
+                                    <constraint firstItem="Cl4-k0-Asp" firstAttribute="leading" secondItem="uOO-FB-DrK" secondAttribute="leading" id="RW3-XP-n5t"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="T2C-yB-vt5"/>
+                                    <constraint firstItem="HSX-6n-Kyl" firstAttribute="leading" secondItem="uOO-FB-DrK" secondAttribute="leading" id="VGA-d0-kHP"/>
+                                    <constraint firstItem="Vqx-Wa-5Id" firstAttribute="top" secondItem="Cl4-k0-Asp" secondAttribute="bottom" id="ZzZ-Xk-oLH"/>
+                                    <constraint firstItem="bMt-Lh-ZI7" firstAttribute="top" secondItem="uOO-FB-DrK" secondAttribute="top" id="cK2-uO-Db6"/>
+                                    <constraint firstItem="UMg-1o-P4b" firstAttribute="leading" secondItem="uOO-FB-DrK" secondAttribute="leading" id="euo-wY-eyE"/>
+                                    <constraint firstItem="Cl4-k0-Asp" firstAttribute="top" secondItem="UMg-1o-P4b" secondAttribute="bottom" id="gyR-cG-1dW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vqx-Wa-5Id" secondAttribute="trailing" id="hoG-cN-qj0"/>
+                                    <constraint firstAttribute="trailing" secondItem="HSX-6n-Kyl" secondAttribute="trailing" id="kbn-mq-gbl"/>
+                                    <constraint firstItem="HSX-6n-Kyl" firstAttribute="top" secondItem="Vqx-Wa-5Id" secondAttribute="bottom" id="rLC-68-njX"/>
+                                    <constraint firstItem="Vqx-Wa-5Id" firstAttribute="leading" secondItem="uOO-FB-DrK" secondAttribute="leading" id="tjw-lw-B99"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="uOO-FB-DrK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4Te-yd-f90"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Iys-3P-vMx" secondAttribute="bottom" id="4uT-R1-cal"/>
                             <constraint firstItem="PsZ-MB-izJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Kf-Ou-PP6"/>
                             <constraint firstItem="Iys-3P-vMx" firstAttribute="top" secondItem="qLX-bm-KEc" secondAttribute="bottom" id="7Fp-Cw-vPX"/>
                             <constraint firstItem="qLX-bm-KEc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8RH-SW-ZgT"/>
+                            <constraint firstItem="uOO-FB-DrK" firstAttribute="top" secondItem="qLX-bm-KEc" secondAttribute="bottom" id="9Tt-2J-TUQ"/>
                             <constraint firstItem="PsZ-MB-izJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RQe-Ma-gV7"/>
+                            <constraint firstItem="uOO-FB-DrK" firstAttribute="top" secondItem="qLX-bm-KEc" secondAttribute="bottom" id="Rgm-t2-1rV"/>
                             <constraint firstAttribute="trailing" secondItem="Iys-3P-vMx" secondAttribute="trailing" id="ZYI-io-BzM"/>
                             <constraint firstAttribute="trailing" secondItem="PsZ-MB-izJ" secondAttribute="trailing" id="hye-Ue-pXz"/>
                             <constraint firstItem="Iys-3P-vMx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jd7-LH-fYm"/>
                             <constraint firstItem="Iys-3P-vMx" firstAttribute="top" secondItem="qLX-bm-KEc" secondAttribute="bottom" id="lDD-TW-CnP"/>
                             <constraint firstItem="qLX-bm-KEc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sZf-kL-rzw"/>
                             <constraint firstAttribute="trailing" secondItem="qLX-bm-KEc" secondAttribute="trailing" id="sdT-Mg-Pne"/>
+                            <constraint firstItem="uOO-FB-DrK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zkK-c2-OWV"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="CategoriesMenu" destination="uOO-FB-DrK" id="cIw-xv-GW1"/>
                         <outlet property="tableArticles" destination="Iys-3P-vMx" id="OS4-fT-elk"/>
+                        <segue destination="9k2-mh-XlQ" kind="show" identifier="categories" id="xOV-wX-vlU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-79.200000000000003" y="138.98050974512745"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Eri-q7-34R">
+            <objects>
+                <viewController id="9k2-mh-XlQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mAi-wt-7NU"/>
+                        <viewControllerLayoutGuide type="bottom" id="bRv-CW-qHL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="04z-R4-ANM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ptu-tI-2Ce">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.88990384619999996" green="0.3617263402" blue="0.8828487505" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QpU-Lt-Ueb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-79" y="1016"/>
         </scene>
         <!--Article Web View Controller-->
         <scene sceneID="Ezi-tr-ecl">
@@ -197,4 +348,13 @@
             <point key="canvasLocation" x="929" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="buisness" width="25" height="25"/>
+        <image name="enter" width="24" height="24"/>
+        <image name="health" width="40" height="40"/>
+        <image name="menu" width="48" height="48"/>
+        <image name="science" width="50" height="50"/>
+        <image name="sports" width="40" height="40"/>
+        <image name="tech" width="48" height="48"/>
+    </resources>
 </document>

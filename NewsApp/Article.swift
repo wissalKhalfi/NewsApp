@@ -19,4 +19,14 @@ class Article: NSObject {
     
     
 
+    override var  description : String {
+        return "title: \(self.title)" +
+            "author: \(self.author)" +
+            "urlToImage: \(self.urlToImage)\n" +
+            "articleDescription: \(self.articleDescription)\n" +
+            "url : \(self.url)\n"
+        
+        
+    }
+    
 }
