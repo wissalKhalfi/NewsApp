@@ -64,21 +64,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         //print(self.articles?[indexPath.item].description)
-        /*let dateFormatter = DateFormatter()
-        let tempLocale = dateFormatter.locale // save locale temporarily
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        let dateP = self.articles?[indexPath.item].publishedAt
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        dateFormatter.locale = tempLocale // reset the locale
-        let dateString = dateFormatter.string(from: dateP!)
-        print("date publication: ",dateString)*/
-        //cell.ArticlePublishDate.text = dateString
+       
         if ((self.articles?[indexPath.item].urlToImage) != nil) {
            cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage!)!)
         } else {
             let image : UIImage = UIImage(named: "NotAvailable")!
             cell.ImgArticle.image = image
             
+        }
+        
+        if(self.articles?[indexPath.item].publishedAt != nil ){
+            
+            let dateFormatter = DateFormatter()
+            let tempLocale = dateFormatter.locale // save locale temporarily
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            let dateP = self.articles?[indexPath.item].publishedAt
+            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            dateFormatter.locale = tempLocale // reset the locale
+            let dateString = dateFormatter.string(from: dateP!)
+            cell.ArticlePublishDate.text = dateString
+        }else{
+            cell.ArticlePublishDate.text =  "No publishing date available"
         }
         
         if(self.articles?[indexPath.item].title != nil ){

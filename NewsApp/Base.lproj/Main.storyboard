@@ -74,9 +74,9 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publish date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuP-mp-hbc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publish date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuP-mp-hbc">
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.80784314869999996" green="0.027450980619999999" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -98,7 +98,7 @@
                                                 <constraint firstItem="MsH-09-iOS" firstAttribute="leading" secondItem="Jp7-9E-TRi" secondAttribute="trailing" constant="8" id="vgR-Be-uyz"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="0.29358411815068491" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="ArticlePublishDate" destination="OuP-mp-hbc" id="bxT-1g-wJH"/>
                                             <outlet property="AuthorArticle" destination="ywf-cd-jaX" id="ld0-L3-f4R"/>
@@ -115,42 +115,41 @@
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uOO-FB-DrK">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMt-Lh-ZI7">
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <button opaque="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMt-Lh-ZI7">
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="SRo-To-3vM"/>
                                             <constraint firstAttribute="height" constant="100" id="guk-Lb-ihH"/>
-                                            <constraint firstAttribute="width" constant="180" id="lfo-ro-gYX"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="23"/>
                                         <state key="normal" title="Business" image="buisness">
-                                            <color key="titleColor" red="0.23374258980000001" green="0.75298477559999999" blue="0.62808172579999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" red="0.52303106249999998" green="0.68354238739999995" blue="0.70024038460000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="Business:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mIm-uE-lgm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-1o-P4b">
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="IhW-s7-hHM"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="M3i-wY-e5m"/>
                                             <constraint firstAttribute="height" constant="100" id="aY7-lQ-BAG"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="entertaiment" image="enter">
-                                            <color key="titleColor" red="0.80784314869999996" green="0.027450980619999999" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="entertaiment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ULr-Uj-LdQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-k0-Asp">
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <button opaque="NO" contentMode="left" verticalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-k0-Asp">
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="UDh-NS-2GS"/>
                                             <constraint firstAttribute="height" constant="100" id="Wo0-Uz-p3O"/>
-                                            <constraint firstAttribute="width" constant="180" id="vAy-Nw-hsg"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Health" image="health">
                                             <color key="titleColor" red="0.46666666870000001" green="0.76470589639999997" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -159,12 +158,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-Wa-5Id">
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="OBG-SX-x9K"/>
-                                            <constraint firstAttribute="width" constant="180" id="rac-To-h0E"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="xp2-1L-LB7"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Science" image="science">
                                             <color key="titleColor" red="0.99226762820000003" green="0.12467936459999999" blue="0.096805434780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -173,12 +172,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSX-6n-Kyl">
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Kgr-IO-M52"/>
-                                            <constraint firstAttribute="width" constant="180" id="PlQ-QE-sim"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="xqa-xs-TNk"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Sports" image="sports">
                                             <color key="titleColor" red="0.98431372549999996" green="0.78823529410000004" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -187,14 +186,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjM-ra-ghu">
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="FbM-B9-mC9"/>
-                                            <constraint firstAttribute="width" constant="180" id="uKF-AT-K06"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="h6h-8K-JL4"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Technology" image="tech">
-                                            <color key="titleColor" red="0.1411764771" green="0.3960784376" blue="0.5647059083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="tech:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mFb-j0-R7d"/>
