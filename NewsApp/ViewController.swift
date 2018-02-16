@@ -33,6 +33,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
   
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            
+            let ShakeAlert = UIAlertController(title: "Quit", message: "Would you like to quit the News App ?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            ShakeAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                exit(0)
+            }))
+            
+            ShakeAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+               
+            }))
+            
+            self.present(ShakeAlert, animated: true, completion:nil)
+
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableArticles.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
