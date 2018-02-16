@@ -22,20 +22,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //Hide Menu on init
         CategoriesMenu.isHidden = true
+        
+        //Get all Articles
         fetchArticles(typeArticle: "all")
         
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //Refresh table content
         tableArticles.reloadData()
     }
 
   
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            
+            //Reload home articles when shake gesture
             let ShakeAlert = UIAlertController(title: "Home", message: "Back to all articles?", preferredStyle: UIAlertControllerStyle.alert)
             
             ShakeAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
@@ -52,6 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //Fill cells with equivalent data
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableArticles.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
@@ -111,6 +117,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.present(webVC, animated: true, completion: nil)
     }
     
+    
+    //Get articls from database by type
     func fetchArticles(typeArticle:String){
         
         var urll:String = "https://newsapi.org/v2/top-headlines?country=fr&apiKey=46935084a6114cd9aa4b7585387a5c60"
@@ -138,11 +146,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         else  if(typeArticle == "tech") {
             urll = "https://newsapi.org/v2/top-headlines?country=fr&category=technology&apiKey=46935084a6114cd9aa4b7585387a5c60"
         }
-        
-        
-        
-        
-        
         
         
         let size = CGSize(width: 30, height: 30)
@@ -229,7 +232,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    
+    //Show business articles
     @IBAction func Business(_ sender: AnyObject) {
        // print ("buisiness")
         ShowCategoriesIsVisible = false
@@ -237,6 +240,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchArticles(typeArticle: "business")
     }
     
+     //Show entertaiment articles
     @IBAction func entertaiment(_ sender: AnyObject) {
          //print ("entertaiment")
         ShowCategoriesIsVisible = false
@@ -244,31 +248,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchArticles(typeArticle: "entertaiment")
     }
     
+    //Show health articles
     @IBAction func health(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
         fetchArticles(typeArticle: "health")
     }
     
+    //Show science articles
     @IBAction func science(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
         fetchArticles(typeArticle: "science")
     }
     
-  
+    //Show sports articles
     @IBAction func sports(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
         fetchArticles(typeArticle: "sports")
     }
     
+    //Show tech articles
     @IBAction func tech(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
         fetchArticles(typeArticle: "tech")
     }
     
+    
+    //Show side menu
     @IBAction func ShowCategories(_ sender: AnyObject) {
         
         if !ShowCategoriesIsVisible {
@@ -289,6 +298,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("The animation is complete!")
         }
     }
+    
+    
     
     func displayAlertMessage(messageToDisplay: String)
     {

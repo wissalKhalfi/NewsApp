@@ -16,11 +16,17 @@ class ArticleWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load article in webView
         Articlewebview.loadRequest(URLRequest(url: URL(string: url!)!))
         
     }
 
+    
+    
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        //Share article to external applications when shake gesture
         if motion == .motionShake {
             
             let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
