@@ -36,10 +36,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             
-            let ShakeAlert = UIAlertController(title: "Quit", message: "Would you like to quit the News App ?", preferredStyle: UIAlertControllerStyle.alert)
+            let ShakeAlert = UIAlertController(title: "Home", message: "Back to all articles?", preferredStyle: UIAlertControllerStyle.alert)
             
             ShakeAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                exit(0)
+                //exit(0)
+                self.fetchArticles(typeArticle: "all")
             }))
             
             ShakeAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -149,7 +150,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.startAnimating(size, message: "Loading...")
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-            NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching...")
+            
+            if(typeArticle == "all")
+            {
+             NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching...")
+            }
+            else  if(typeArticle == "business") {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching business articles...")
+            }
+            else  if(typeArticle == "entertaiment") {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching entertaiment articles...")
+            }
+            else  if(typeArticle == "health") {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching health articles...")
+            }
+            else  if(typeArticle == "science") {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching science articles...")
+            }
+            else  if(typeArticle == "sports") {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching sports articles...")
+            }
+            else  if(typeArticle == "tech") {
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching tech articles...")
+            }
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
