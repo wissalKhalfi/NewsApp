@@ -115,7 +115,7 @@
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uOO-FB-DrK">
                                 <subviews>
-                                    <button opaque="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMt-Lh-ZI7">
+                                    <button opaque="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMt-Lh-ZI7">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="SRo-To-3vM"/>
@@ -129,7 +129,7 @@
                                             <action selector="Business:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mIm-uE-lgm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-1o-P4b">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-1o-P4b">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="M3i-wY-e5m"/>
@@ -143,7 +143,7 @@
                                             <action selector="entertaiment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ULr-Uj-LdQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="left" verticalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-k0-Asp">
+                                    <button opaque="NO" contentMode="left" verticalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-k0-Asp">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="UDh-NS-2GS"/>
@@ -157,7 +157,7 @@
                                             <action selector="health:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XiT-hg-Wcw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-Wa-5Id">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-Wa-5Id">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="OBG-SX-x9K"/>
@@ -171,7 +171,7 @@
                                             <action selector="science:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WUa-4Y-J5P"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSX-6n-Kyl">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSX-6n-Kyl">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Kgr-IO-M52"/>
@@ -185,7 +185,7 @@
                                             <action selector="sports:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y91-Uz-5Mp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjM-ra-ghu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjM-ra-ghu">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="FbM-B9-mC9"/>
@@ -323,12 +323,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="buisness" width="25" height="25"/>
-        <image name="enter" width="24" height="24"/>
-        <image name="health" width="40" height="40"/>
+        <image name="buisness" width="48" height="48"/>
+        <image name="enter" width="48" height="48"/>
+        <image name="health" width="48" height="48"/>
         <image name="menu" width="48" height="48"/>
-        <image name="science" width="50" height="50"/>
-        <image name="sports" width="40" height="40"/>
+        <image name="science" width="48" height="48"/>
+        <image name="sports" width="48" height="48"/>
         <image name="tech" width="48" height="48"/>
     </resources>
 </document>
