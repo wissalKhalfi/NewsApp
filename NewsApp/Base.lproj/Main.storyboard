@@ -187,7 +187,7 @@
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="SRo-To-3vM"/>
-                                            <constraint firstAttribute="height" constant="100" id="guk-Lb-ihH"/>
+                                            <constraint firstAttribute="height" constant="60" id="oZY-FB-3xF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="23"/>
                                         <state key="normal" title="Business" image="buisness">
@@ -200,8 +200,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-1o-P4b">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="DYw-js-T3m"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="M3i-wY-e5m"/>
-                                            <constraint firstAttribute="height" constant="100" id="aY7-lQ-BAG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="entertaiment" image="enter">
@@ -214,8 +214,8 @@
                                     <button opaque="NO" contentMode="left" verticalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl4-k0-Asp">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="NuI-QG-3Rk"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="UDh-NS-2GS"/>
-                                            <constraint firstAttribute="height" constant="100" id="Wo0-Uz-p3O"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Health" image="health">
@@ -228,7 +228,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqx-Wa-5Id">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="OBG-SX-x9K"/>
+                                            <constraint firstAttribute="height" constant="60" id="pph-0S-Iz2"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="xp2-1L-LB7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
@@ -242,7 +242,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSX-6n-Kyl">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Kgr-IO-M52"/>
+                                            <constraint firstAttribute="height" constant="60" id="iI0-Wa-aSd"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="xqa-xs-TNk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
@@ -256,8 +256,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjM-ra-ghu">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="FbM-B9-mC9"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="h6h-8K-JL4"/>
+                                            <constraint firstAttribute="height" constant="60" id="qGa-j2-C2o"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Technology" image="tech">
@@ -270,11 +270,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RT-3V-jeS">
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="D5V-AV-Isd"/>
+                                            <constraint firstAttribute="height" constant="60" id="1W3-DP-fAT"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="snO-Yf-XQ7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                        <state key="normal" title="All Sources" image="tech">
+                                        <state key="normal" title="All Sources" image="all">
                                             <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -411,6 +411,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="all" width="32" height="32"/>
         <image name="buisness" width="32" height="32"/>
         <image name="enter" width="32" height="32"/>
         <image name="health" width="32" height="32"/>
