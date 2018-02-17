@@ -10,14 +10,15 @@ import UIKit
 import Alamofire
 import NVActivityIndicatorView
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , NVActivityIndicatorViewable {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , NVActivityIndicatorViewable ,  UISearchResultsUpdating  {
     
    
     @IBOutlet weak var CategoriesMenu: UIStackView!
     @IBOutlet weak var tableArticles: UITableView!
     var articles: [Article]? = []
+    var filteredArticles: [Article]? = []
     var ShowCategoriesIsVisible = false
-    
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         
@@ -28,6 +29,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //Get all Articles
         fetchArticles(typeArticle: "all")
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        tableArticles.tableHeaderView = searchController.searchBar
+        
+        
         
         
     }
@@ -37,6 +43,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableArticles.reloadData()
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        
+        filteredArticles = (articles?.filter { candy in
+            return (candy.title.lowercased().contains(searchText.lowercased()))
+            })!
+        
+        tableArticles.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+
+    
   
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
@@ -63,47 +88,92 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableArticles.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
         
         
-        //print(self.articles?[indexPath.item].description)
-       
-        if ((self.articles?[indexPath.item].urlToImage) != nil) {
-           cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage!)!)
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            if ((self.filteredArticles?[indexPath.item].urlToImage) != nil) {
+                cell.ImgArticle.downloadImage(from: (self.filteredArticles?[indexPath.item].urlToImage!)!)
+            } else {
+                let image : UIImage = UIImage(named: "NotAvailable")!
+                cell.ImgArticle.image = image
+            }
+            
+            if(self.filteredArticles?[indexPath.item].publishedAt != nil ){
+                
+                let dateFormatter = DateFormatter()
+                let tempLocale = dateFormatter.locale // save locale temporarily
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                let dateP = self.filteredArticles?[indexPath.item].publishedAt
+                dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                dateFormatter.locale = tempLocale // reset the locale
+                let dateString = dateFormatter.string(from: dateP!)
+                cell.ArticlePublishDate.text = dateString
+            }else{
+                cell.ArticlePublishDate.text =  "No publishing date available"
+            }
+            
+            if(self.filteredArticles?[indexPath.item].title != nil ){
+                cell.TitleArticle.text = self.filteredArticles?[indexPath.item].title
+            }else{
+                cell.TitleArticle.text =  "No title available"
+            }
+            
+            if(self.filteredArticles?[indexPath.item].articleDescription != nil ){
+                cell.DescArticle.text = self.filteredArticles?[indexPath.item].articleDescription
+            }else{
+                cell.DescArticle.text =  "No description available"
+            }
+            
+            if(self.filteredArticles?[indexPath.item].author != nil ){
+                cell.AuthorArticle.text = self.filteredArticles?[indexPath.item].author
+            }else{
+                cell.AuthorArticle.text =  "No Author available"
+            }
+/////////////////////////
         } else {
-            let image : UIImage = UIImage(named: "NotAvailable")!
-            cell.ImgArticle.image = image
+            if ((self.articles?[indexPath.item].urlToImage) != nil) {
+                cell.ImgArticle.downloadImage(from: (self.articles?[indexPath.item].urlToImage!)!)
+            } else {
+                let image : UIImage = UIImage(named: "NotAvailable")!
+                cell.ImgArticle.image = image
+                
+            }
             
-        }
-        
-        if(self.articles?[indexPath.item].publishedAt != nil ){
+            if(self.articles?[indexPath.item].publishedAt != nil ){
+                
+                let dateFormatter = DateFormatter()
+                let tempLocale = dateFormatter.locale // save locale temporarily
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                let dateP = self.articles?[indexPath.item].publishedAt
+                dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                dateFormatter.locale = tempLocale // reset the locale
+                let dateString = dateFormatter.string(from: dateP!)
+                cell.ArticlePublishDate.text = dateString
+            }else{
+                cell.ArticlePublishDate.text =  "No publishing date available"
+            }
             
-            let dateFormatter = DateFormatter()
-            let tempLocale = dateFormatter.locale // save locale temporarily
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-            let dateP = self.articles?[indexPath.item].publishedAt
-            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-            dateFormatter.locale = tempLocale // reset the locale
-            let dateString = dateFormatter.string(from: dateP!)
-            cell.ArticlePublishDate.text = dateString
-        }else{
-            cell.ArticlePublishDate.text =  "No publishing date available"
+            if(self.articles?[indexPath.item].title != nil ){
+                cell.TitleArticle.text = self.articles?[indexPath.item].title
+            }else{
+                cell.TitleArticle.text =  "No title available"
+            }
+            
+            if(self.articles?[indexPath.item].articleDescription != nil ){
+                cell.DescArticle.text = self.articles?[indexPath.item].articleDescription
+            }else{
+                cell.DescArticle.text =  "No description available"
+            }
+            
+            if(self.articles?[indexPath.item].author != nil ){
+                cell.AuthorArticle.text = self.articles?[indexPath.item].author
+            }else{
+                cell.AuthorArticle.text =  "No Author available"
+            }
+
         }
         
-        if(self.articles?[indexPath.item].title != nil ){
-            cell.TitleArticle.text = self.articles?[indexPath.item].title
-        }else{
-            cell.TitleArticle.text =  "No title available"
-        }
         
-        if(self.articles?[indexPath.item].articleDescription != nil ){
-            cell.DescArticle.text = self.articles?[indexPath.item].articleDescription
-        }else{
-            cell.DescArticle.text =  "No description available"
-        }
-        
-        if(self.articles?[indexPath.item].author != nil ){
-            cell.AuthorArticle.text = self.articles?[indexPath.item].author
-        }else{
-             cell.AuthorArticle.text =  "No Author available"
-        }
+       
         
         
         return cell
@@ -114,12 +184,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return self.articles?.count ?? 0
+      
+        //return self.articles?.count ?? 0
+        
+        
+        var count:Int?
+            if searchController.isActive && searchController.searchBar.text != "" {
+                count = self.filteredArticles?.count
+            }
+            else {count = self.articles?.count}
+        
+        return count ?? 0 
+        
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let webVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "web") as! ArticleWebViewController
-        webVC.url = self.articles?[indexPath.item].url
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            webVC.url = self.filteredArticles?[indexPath.item].url
+        } else {
+            webVC.url = self.articles?[indexPath.item].url
+        }
+        
         self.present(webVC, animated: true, completion: nil)
     }
     
