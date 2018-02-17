@@ -10,11 +10,16 @@ import UIKit
 import Alamofire
 import NVActivityIndicatorView
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , NVActivityIndicatorViewable ,  UISearchResultsUpdating  {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource , NVActivityIndicatorViewable ,  UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate {
     
    
     @IBOutlet weak var CategoriesMenu: UIStackView!
     @IBOutlet weak var tableArticles: UITableView!
+    @IBOutlet weak var SourcesView: UIView!
+    @IBOutlet weak var CollectionSources: UICollectionView!
+    
+    
+    var sources: [Source]? = []
     var articles: [Article]? = []
     var filteredArticles: [Article]? = []
     var ShowCategoriesIsVisible = false
@@ -24,8 +29,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         super.viewDidLoad()
         
-        //Hide Menu on init
+        //Hide Menu and collectionView on init
         CategoriesMenu.isHidden = true
+        SourcesView.isHidden = true
         
         //Get all Articles
         fetchArticles(typeArticle: "all")
@@ -34,6 +40,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableArticles.tableHeaderView = searchController.searchBar
         
         
+        fetchSources()
         
         
     }
@@ -69,7 +76,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let ShakeAlert = UIAlertController(title: "Home", message: "Back to all articles?", preferredStyle: UIAlertControllerStyle.alert)
             
             ShakeAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                //exit(0)
                 self.fetchArticles(typeArticle: "all")
             }))
             
@@ -179,14 +185,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = CollectionSources.dequeueReusableCell(withReuseIdentifier: "ArticleSourceCell", for: indexPath) as! ArticleSourceCell
+        
+        if ((self.sources?[indexPath.item].name) != nil) {
+             cell.SourceName.text =  self.sources?[indexPath.item].name
+        } else {
+            cell.SourceName.text =  "No description available"
+            
+        }
+        
+        if ((self.sources?[indexPath.item].descriptionSource) != nil) {
+            cell.DescriptionSource.text =  self.sources?[indexPath.item].descriptionSource
+        } else {
+            cell.DescriptionSource.text =  "No description available"
+            
+        }
+        
+        return cell
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
-        //return self.articles?.count ?? 0
-        
         
         var count:Int?
             if searchController.isActive && searchController.searchBar.text != "" {
@@ -197,6 +225,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return count ?? 0 
         
         
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.sources?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -211,6 +242,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.present(webVC, animated: true, completion: nil)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let webVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "web") as! ArticleWebViewController
+            webVC.url = self.sources?[indexPath.item].url
+        self.present(webVC, animated: true, completion: nil)
+    }
     
     //Get articls from database by type
     func fetchArticles(typeArticle:String){
@@ -325,12 +361,83 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+
+    //Fetch All sources
     
+    func fetchSources(){
+        
+        let urll:String = "https://newsapi.org/v2/sources?language=fr&country=fr&apiKey=46935084a6114cd9aa4b7585387a5c60"
+        
+        
+        let size = CGSize(width: 30, height: 30)
+        
+        self.startAnimating(size, message: "Loading...")
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+  
+                NVActivityIndicatorPresenter.sharedInstance.setMessage("Fetching all sources...")
+           
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.stopAnimating()
+        }
+        
+        if (self.sources?.count != nil)
+        {
+            self.sources?.removeAll()
+        }
+        
+        Alamofire.request(urll, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON {
+                
+                response in
+                //debugPrint(response)
+                switch response.result {
+                case .success(let JSON):
+                    // print("successss")
+                    let response = JSON as! NSDictionary
+                    // print(response)
+                    for item in response.object(forKey: "sources") as! NSArray  {
+                        
+                        let source = Source()
+                        
+                        let id = (item as AnyObject).object(forKey: "id") as? String
+                        let name = (item as AnyObject).object(forKey: "name") as? String
+                        let desc = (item as AnyObject).object(forKey: "description") as? String
+                        let category = (item as AnyObject).object(forKey: "category") as? String
+                        let url = (item as AnyObject).object(forKey: "url") as? String
+                        let language = (item as AnyObject).object(forKey: "language") as? String
+                        let country = (item as AnyObject).object(forKey: "country") as? String
+                        
+                        source.id = id!
+                        source.name = name
+                        source.descriptionSource = desc
+                        source.url = url
+                        source.category = category
+                        source.language = language
+                        source.country = country
+                    
+                        self.sources?.append(source)
+                        
+                    }
+                    
+                    self.CollectionSources.reloadData()
+                    
+                    
+                case .failure(let error):
+                    self.displayAlertMessage(messageToDisplay: "Request failed with error: \(error)")
+                }
+        }
+        
+    }
+
     //Show business articles
     @IBAction func Business(_ sender: AnyObject) {
        // print ("buisiness")
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
+        SourcesView.isHidden = true
         fetchArticles(typeArticle: "business")
     }
     
@@ -339,6 +446,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
          //print ("entertaiment")
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
+        SourcesView.isHidden = true
         fetchArticles(typeArticle: "entertaiment")
     }
     
@@ -346,6 +454,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func health(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
+        SourcesView.isHidden = true
         fetchArticles(typeArticle: "health")
     }
     
@@ -353,6 +462,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func science(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
+        SourcesView.isHidden = true
         fetchArticles(typeArticle: "science")
     }
     
@@ -360,6 +470,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func sports(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
+        SourcesView.isHidden = true
         fetchArticles(typeArticle: "sports")
     }
     
@@ -367,9 +478,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func tech(_ sender: AnyObject) {
         ShowCategoriesIsVisible = false
         CategoriesMenu.isHidden = true
+        SourcesView.isHidden = true
         fetchArticles(typeArticle: "tech")
     }
     
+    //Show All sources
+    
+    @IBAction func Sources(_ sender: AnyObject) {
+        
+        SourcesView.isHidden = false
+        ShowCategoriesIsVisible = false
+        CategoriesMenu.isHidden = true
+    }
     
     //Show side menu
     @IBAction func ShowCategories(_ sender: AnyObject) {
