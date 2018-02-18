@@ -19,6 +19,8 @@ All the sources are displayed in a grid view. Clicking one of teh items redirect
 <img align="left" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.56.52%20PM.png">
 <img align="left" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.57.04%20PM.png">
 <img align="left" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.57.04%20PM.png">
-<img align="left" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.57.53%20PM.png">
-<img align="left" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.58.02%20PM.png">
-<img align="left" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.58.15%20PM.png">
+<img align="left" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.57.53%20PM.png"> </br>
+
+<b>Shake gestures actions</b>
+<img align="center" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.58.02%20PM.png">
+<img align="center" width="200" height="300" src="https://github.com/wissalKhalfi/NewsApp/blob/master/NewsApp%20Screen%20Shots/Simulator%20Screen%20Shot%2017%20fe%CC%81vr.%202018%20a%CC%80%2010.58.15%20PM.png">
